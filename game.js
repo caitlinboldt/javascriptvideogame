@@ -4,8 +4,17 @@ let ctx;
 let butterflyImage = new Image();
 butterflyImage.src = "butterfly.png";
 
+let raindropsImage = new Image();
+raindropsImage.src = "raindrop.png";
+
 let dustImage = new Image();
 dustImage.src = "fairydust.png";
+
+let backgroundImage = new Image();
+backgroundImage.src = "forestfantasy.jpg";
+
+let backgroundX, backgroundY;
+backgroundX = backgroundY = 0;
 
 let x, y, width, height;
 x = 10;
@@ -13,6 +22,13 @@ y = 10;
 width = 60;
 height = 60;
 let speed = 3;
+
+let badX, badY, badWidth, badHeight;
+badX = 0;
+badY = 0;
+badWidth = 40;
+badHeight = 40;
+let badSpeed = 3;
 
 let dustX, dustY, dustWidth, dustHeight;
 dustX = 0;
@@ -42,16 +58,27 @@ const startGame = () => {
 
 const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBackground();
 
     moveGoodGuy();
+    moveBadGuy();
     moveDust();
 
+
+    // if(checkCollisions(width, height, x, y, badWidth, badHeight, badX, badY)) {
+    //     // Game over
+    // }
     if(checkCollisions(width, height, x, y, dustWidth, dustHeight, dustX, dustY)) {
         repositionDust();
         score += 5;
     }
 
     drawScore();
+}
+
+function drawBackground() {
+
+    ctx.drawImage(backgroundImage, backgroundX, backgroundY, canvas.width, canvas.height);
 
 }
 
@@ -69,9 +96,17 @@ const moveGoodGuy = () => {
     if(keys["ArrowDown"] == true)
         y++;
 
-    // ctx.fillStyle = "blue";
-    // ctx.fillRect(x, y, width, height);
     ctx.drawImage(butterflyImage, x, y, width, height);
+}
+
+const moveBadGuy = () => {
+    badY+=2;
+
+    if (badY > 280) {
+        repositionBadGuy();
+    }
+
+    ctx.drawImage(raindropsImage, badX, badY, badWidth, badHeight);
 }
 
 const moveDust = () => {
@@ -91,6 +126,11 @@ function drawScore() {
     ctx.fillStyle = "purple";
     ctx.font = "14px Tahoma";
     ctx.fillText("Score: " + score, 10, 20);
+}
+
+function repositionBadGuy() {
+    badY = 0;
+    badX = Math.random() * 280;
 }
 
 function repositionDust() {
