@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+
     <!-- Title -->
     <title>First Video Game</title>
 
@@ -13,10 +16,20 @@
     <!-- Script tag -->
     <script src="game.js"></script>
 </head>
-<body onload="startGame()">
+<body>
     
     <h1>Faerie Dreams</h1>
-    <canvas id="gc" height="300px" width="300px"></canvas>
+    <div id="container">
+        <canvas id="gc" style="display: none" height="300px" width="300px"></canvas>
+        <div id="overlay1">
+            <p>Collect 25 bottles of faerie dust without getting hit by the raindrops!</p>
+            <button onclick="startGame()">Start</button>
+        </div>
+        <div id="overlay2" style="display: none">
+            <p>You Win!</p>
+            <button onclick="reset()">Play Again</button>
+        </div>
+    </div>
 
 
 </body>

@@ -1,17 +1,18 @@
+
 let canvas;
 let ctx;
 
 let butterflyImage = new Image();
-butterflyImage.src = "butterfly.png";
+butterflyImage.src = "img/butterfly.png";
 
 let raindropsImage = new Image();
-raindropsImage.src = "raindrop.png";
+raindropsImage.src = "img/raindrop.png";
 
 let dustImage = new Image();
-dustImage.src = "fairydust.png";
+dustImage.src = "img/fairydust.png";
 
 let backgroundImage = new Image();
-backgroundImage.src = "forestfantasy.jpg";
+backgroundImage.src = "img/forestfantasy.jpg";
 
 let backgroundX, backgroundY;
 backgroundX = backgroundY = 0;
@@ -24,8 +25,8 @@ height = 60;
 let speed = 3;
 
 let badX, badY, badWidth, badHeight;
-badX = 0;
-badY = 0;
+badX = 100;
+badY = 100;
 badWidth = 40;
 badHeight = 40;
 let badSpeed = 3;
@@ -49,11 +50,19 @@ window.onkeyup = (event) => {
 }
 
 const startGame = () => {
+    document.getElementById("gc").style.display = "";
+    document.getElementById("overlay1").style.display = "none";
+    
+
     canvas = document.getElementById("gc");
     ctx = canvas.getContext("2d");
 
     let fps = 1000 / 100;
     window.setInterval(update, fps);
+}
+
+const reset = () => {
+    window.location.reload();
 }
 
 const update = () => {
@@ -65,16 +74,22 @@ const update = () => {
     moveDust();
 
 
-    // if(checkCollisions(width, height, x, y, badWidth, badHeight, badX, badY)) {
-    //     // Game over
-    // }
+    if(checkCollisions(width, height, x, y, badWidth, badHeight, badX, badY)) {
+        document.location.reload();
+    }
     if(checkCollisions(width, height, x, y, dustWidth, dustHeight, dustX, dustY)) {
         repositionDust();
-        score += 5;
+        score ++;
+    }
+    if(score == 25) {
+        document.getElementById("gc").style.display = "none";
+        document.getElementById("overlay2").style.display = "";
     }
 
     drawScore();
 }
+
+
 
 function drawBackground() {
 
@@ -100,7 +115,7 @@ const moveGoodGuy = () => {
 }
 
 const moveBadGuy = () => {
-    badY+=2;
+    badY++;
 
     if (badY > 280) {
         repositionBadGuy();
