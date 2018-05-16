@@ -20,15 +20,15 @@ backgroundX = backgroundY = 0;
 let x, y, width, height;
 x = 10;
 y = 10;
-width = 60;
+width = 50;
 height = 60;
 let speed = 3;
 
 let badX, badY, badWidth, badHeight;
 badX = 100;
 badY = 100;
-badWidth = 40;
-badHeight = 40;
+badWidth = 35;
+badHeight = 50;
 let badSpeed = 3;
 
 let dustX, dustY, dustWidth, dustHeight;
@@ -111,6 +111,8 @@ const moveGoodGuy = () => {
     if(keys["ArrowDown"] == true)
         y++;
 
+    // ctx.fillStyle = "blue";
+    // ctx.fillRect(x, y, width, height);
     ctx.drawImage(butterflyImage, x, y, width, height);
 }
 
@@ -121,6 +123,8 @@ const moveBadGuy = () => {
         repositionBadGuy();
     }
 
+    // ctx.fillStyle = "red";
+    // ctx.fillRect(badX, badY, badWidth, badHeight);
     ctx.drawImage(raindropsImage, badX, badY, badWidth, badHeight);
 }
 
@@ -132,8 +136,7 @@ const moveDust = () => {
         repositionDust();
     }
 
-    // ctx.fillStyle = "red";
-    // ctx.fillRect(badX, badY, badWidth, badHeight);
+    
     ctx.drawImage(dustImage, dustX, dustY, dustWidth, dustHeight);
 }
 
