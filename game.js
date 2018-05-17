@@ -165,8 +165,8 @@ function repositionBadGuy() {
 }
 
 function repositionDust() {
-    dustY = Math.random() * 280;
-    dustX = Math.random() * 280;
+    dustY = Math.random() * 260;
+    dustX = Math.random() * 260;
 }
 
 function checkCollisions(rect1Width, rect1Height, rect1XPos, rect1YPos, rect2Width, rect2Height, rect2XPos, rect2YPos) {
