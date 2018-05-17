@@ -27,8 +27,8 @@ let speed = 3;
 let badX, badY, badWidth, badHeight;
 badX = 100;
 badY = 100;
-badWidth = 35;
-badHeight = 50;
+badWidth = 30;
+badHeight = 40;
 let badSpeed = 3;
 
 let dustX, dustY, dustWidth, dustHeight;
@@ -73,7 +73,6 @@ const update = () => {
     moveBadGuy();
     moveDust();
 
-
     if(checkCollisions(width, height, x, y, badWidth, badHeight, badX, badY)) {
         document.location.reload();
     }
@@ -110,6 +109,19 @@ const moveGoodGuy = () => {
 
     if(keys["ArrowDown"] == true)
         y++;
+
+    if(x >= 250) {
+        x = 250;
+    }
+    if (x <= 0) {
+        x = 0
+    }
+    if(y >= 240) {
+        y = 240;
+    }
+    if(y <= 0) {
+        y = 0;
+    }
 
     // ctx.fillStyle = "blue";
     // ctx.fillRect(x, y, width, height);
