@@ -22,11 +22,15 @@
     <div id="container">
         <canvas id="gc" style="display: none" height="300px" width="300px"></canvas>
         <div id="overlay1">
-            <p>Use the arrow keys to move. Collect 25 bottles of faerie dust without getting hit by the raindrops!</p>
+            <p>Use the arrow keys to move. Collect 25 bottles of faerie dust while staying away from the raindrops!</p>
             <button onclick="startGame()">Start</button>
         </div>
         <div id="overlay2" style="display: none">
-            <p>You Win!</p>
+            <p>You win!</p>
+            <button onclick="reset()">Play Again</button>
+        </div>
+        <div id="overlay3" style="display: none">
+            <p>You didn't make it :(</p>
             <button onclick="reset()">Play Again</button>
         </div>
     </div>

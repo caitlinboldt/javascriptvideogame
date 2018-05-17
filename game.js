@@ -74,7 +74,8 @@ const update = () => {
     moveDust();
 
     if(checkCollisions(width, height, x, y, badWidth, badHeight, badX, badY)) {
-        document.location.reload();
+        document.getElementById("gc").style.display = "none";
+        document.getElementById("overlay3").style.display = "";
     }
     if(checkCollisions(width, height, x, y, dustWidth, dustHeight, dustX, dustY)) {
         repositionDust();
